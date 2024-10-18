@@ -10,11 +10,16 @@ const authRoutes  = require('./routes/auth.routes')
 connection()
 
 //middleware
-app.use(cors(
-    {
-        origin:['http://localhost:3000', 'http://localhost:3001','https://devmap-dashboard.netlify.app/', 'https://developermap.netlify.app/']
-    }
-))
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Specify allowed headers
+}));
+// app.use(cors(
+//     {
+//         origin:['http://localhost:3000', 'http://localhost:3001','https://devmap-dashboard.netlify.app/', 'https://developermap.netlify.app/']
+//     }
+// ))
 app.use(express.json())
 
 // routes
